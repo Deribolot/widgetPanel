@@ -1,0 +1,44 @@
+{
+  "name": "widget-panel",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "git@github.com:Deribolot/widgetPanel.git",
+  "author": "yuderibolot <yuderibolot@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode development",
+    "start": "webpack serve --open --mode development",
+    "analyze": "webpack --profile --json > profile.json",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/lodash": "^4.14.202",
+    "@types/react": "^18.2.63",
+    "@types/react-dom": "^18.2.20",
+    "@types/webpack-env": "^1.18.4",
+    "babel-loader": "^9.1.3",
+    "html-webpack-plugin": "^5.6.0",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "style-loader": "^3.3.4",
+    "typescript-plugin-css-modules": "^5.1.0",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
+  },
+  "dependencies": {
+    "antd": "^5.15.1",
+    "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3"
+  }
+}
