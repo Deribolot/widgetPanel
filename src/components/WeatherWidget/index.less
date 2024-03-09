@@ -1,0 +1,28 @@
+.card {
+    position: relative;
+
+    &.day {
+        background: #efeebc;
+        background: linear-gradient(to bottom, #efeebc 0%, #61d0cf 100%);
+    }
+
+    &.night {
+        background: #192861;
+        background: linear-gradient(to bottom, #192861 0%, #372074 100%);
+    }
+
+    &>div {
+        overflow-wrap: break-word;
+    }
+}
+
+.settings {
+    position: absolute;
+    inset: 0;
+}
+
+.settingsButton {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}

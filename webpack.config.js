@@ -62,6 +62,11 @@ module.exports = (env, argv) => {
                     use: ['babel-loader'],
                     exclude: /node-modules/,
                 },
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    type: 'asset/resource',
+                    exclude: /node-modules/,
+                },
             ]
         },
         resolve: {
