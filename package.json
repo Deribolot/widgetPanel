@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "webpack --mode development",
-    "start": "webpack serve --open --mode development",
+    "build": "webpack --mode development --env weatherAPIKey=b3d3cc323bfb484f809170534240603",
+    "start": "webpack serve --open --mode development --env weatherAPIKey=b3d3cc323bfb484f809170534240603",
     "analyze": "webpack --profile --json > profile.json",
     "compile": "tsc"
   },

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import find from 'lodash/find';
 import { NotificationInstance } from 'antd/es/notification/interface';
@@ -6,22 +6,26 @@ import { DefaultOptionType } from 'antd/es/select';
 import { IWeather } from '..';
 import conditions from '../assets/conditions.json';
 
-const getCurrentWeatherURL = (cityName: string, weatherAPIKey: string) => `http://api.weatherapi.com/v1/current.json?q=${cityName}&key=${weatherAPIKey}`;
+const getCurrentWeatherURL = (cityName: string) => `http://api.weatherapi.com/v1/current.json?q=${cityName}&key=${WEATHER_API_KEY}`;
 
 interface IProps {
     activeCity?: DefaultOptionType,
-    weatherAPIKey: string,
     setWeather(weather: IWeather | null): void,
     api: NotificationInstance
 }
 
-export default ({ activeCity, setWeather, api, weatherAPIKey }: IProps) => {
+export default ({ activeCity, setWeather, api }: IProps) => {
+    const [isPending, setIsPending] = useState(false);
+
     useEffect(() => {
+        let timerId;
         let isActive = true;
-        if (activeCity) {
-            (async () => {
+
+        async function queryWeather() {
+            if (activeCity) {
+                setIsPending(true);
                 try {
-                    const response = await fetch(getCurrentWeatherURL(String(activeCity.value), weatherAPIKey))
+                    const response = await fetch(getCurrentWeatherURL(String(activeCity.value)))
                     const body = await response.json()
                     if (!body?.current) {
                         throw new Error();
@@ -59,10 +63,20 @@ export default ({ activeCity, setWeather, api, weatherAPIKey }: IProps) => {
                         setWeather(null);
                     }
                 }
-            })();
-        }
+                setIsPending(false);
+                if (isActive) {
+                    timerId = setTimeout(queryWeather, 60000);
+                }
+            }
+        };
+
+        queryWeather();
+
         return () => {
             isActive = false;
+            clearTimeout(timerId);
         }
-    }, [activeCity, api.error]);
+    }, [activeCity, api.error, setWeather]);
+
+    return { isPending };
 }

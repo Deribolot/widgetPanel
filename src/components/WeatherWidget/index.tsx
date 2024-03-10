@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, ConfigProvider, theme } from 'antd';
+import { Card, ConfigProvider, theme, Space } from 'antd';
 import { NotificationInstance } from 'antd/es/notification/interface';
 import classnames from 'classnames';
 import find from 'lodash/find';
@@ -11,6 +11,8 @@ import Body from './components/Body';
 import SettingsButton from './components/SettingsButton';
 import Settings from './components/Settings';
 import useFetchWeather from './hooks/useFetchWeather';
+import ErrorBody from './components/ErrorBody';
+import DeletionButton from './components/DeletionButton';
 import styles from './index.less';
 
 const { useToken } = theme;
@@ -33,9 +35,8 @@ interface IProps {
     setIsTempatureUnitC(isSettisTempatureUnitCingMode: boolean): void,
     setActiveCityValue(activeCityValue: string | undefined): void,
     cities: DefaultOptionType[],
+    delete(): void,
 }
-
-export const weatherAPIKey = 'b3d3cc323bfb484f809170534240603';
 
 export default ({
     api,
@@ -44,7 +45,8 @@ export default ({
     isTempatureUnitC,
     setIsTempatureUnitC,
     setActiveCityValue,
-    cities
+    cities,
+    delete: deleteWidget
 }: IProps) => {
     const [isSettingMode, setIsSettingMode] = useState<boolean>(false);
 
@@ -52,8 +54,7 @@ export default ({
 
     const activeCity = find(cities, ['value', activeCityValue])
 
-    useFetchWeather({
-        weatherAPIKey,
+    const { isPending } = useFetchWeather({
         activeCity,
         setWeather,
         api
@@ -80,50 +81,72 @@ export default ({
         zIndex: 100,
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
     } : undefined;
-    return weather && activeCity && (
+
+    return (
         <ConfigProvider
             locale={ruRU}
             theme={{
                 token: isDay
                     ? {}
-                    : {
-                        colorTextBase: token.colorBgBase,
-                    },
+                    : { colorTextBase: token.colorBgBase },
             }}
         >
-            <Card className={cardClassName} size="small" ref={setNodeRef} style={style} {...listeners} {...attributes}>
-                <Body
-                    isTempatureUnitC={isTempatureUnitC}
-                    isDay={isDay}
-                    weather={weather}
-                    cityName={activeCity.label}
-                />
-                {isSettingMode && (
-                    <ConfigProvider
-                        locale={ruRU}
-                        theme={{
-                            token: {
-                                colorTextBase: token.colorTextBase,
-                            },
-                        }}
-                    >
-                        <Settings
-                            className={styles.settings}
+            <Card
+                className={cardClassName}
+                size="small"
+                ref={setNodeRef}
+                loading={isPending && (!weather || !activeCity)}
+                style={style}
+                {...listeners}
+                {...attributes}
+            >
+                {weather && activeCity && (
+                    <>
+                        <Body
                             isTempatureUnitC={isTempatureUnitC}
-                            setIsTempatureUnitC={setIsTempatureUnitC}
-                            cities={cities}
-                            activeCityValue={activeCityValue}
-                            onCityChange={setActiveCityValue}
+                            isDay={isDay}
+                            weather={weather}
+                            cityName={activeCity.label}
                         />
-                    </ConfigProvider>
+                        {isSettingMode && (
+                            <ConfigProvider
+                                locale={ruRU}
+                                theme={{
+                                    token: {
+                                        colorTextBase: token.colorTextBase,
+                                    },
+                                }}
+                            >
+                                <Settings
+                                    className={styles.settings}
+                                    isTempatureUnitC={isTempatureUnitC}
+                                    setIsTempatureUnitC={setIsTempatureUnitC}
+                                    cities={cities}
+                                    activeCityValue={activeCityValue}
+                                    onCityChange={setActiveCityValue}
+                                />
+                            </ConfigProvider>
+                        )}
+                        <Space className={styles.buttons}>
+                            {!isSettingMode && (
+                                <DeletionButton
+                                    onClick={() => {
+                                        deleteWidget()
+                                    }}
+                                />
+                            )}
+                            <SettingsButton
+                                isSettingMode={isSettingMode}
+                                onClick={() => {
+                                    setIsSettingMode(isOldSettingMode => !isOldSettingMode)
+                                }}
+                            />
+                        </Space>
+                    </>
                 )}
-                <SettingsButton
-                    className={styles.settingsButton}
-                    isSettingMode={isSettingMode}
-                    onClick={() => {
-                        setIsSettingMode(isOldSettingMode => !isOldSettingMode)
-                    }}
-                />
+                {(!weather || !activeCity) && !isPending && (
+                    <ErrorBody />
+                )}
             </Card>
         </ConfigProvider>
     );

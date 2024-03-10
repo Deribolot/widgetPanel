@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -95,6 +96,9 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, 'src', 'index.html')
             }),
+            new webpack.DefinePlugin({
+                WEATHER_API_KEY: JSON.stringify(env.weatherAPIKey),
+            })
         ],
     };
 };
