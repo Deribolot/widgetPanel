@@ -6,7 +6,7 @@ interface IProps {
     weather: IWeather,
     isDay: boolean,
     isTempatureUnitC: boolean,
-    cityName: string,
+    cityName: React.ReactNode,
 }
 
 export default ({ weather, isDay, isTempatureUnitC, cityName }: IProps) => {

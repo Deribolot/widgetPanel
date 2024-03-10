@@ -1,0 +1,112 @@
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/Column/index.less ***!
+  \***********************************************************************************************************************************************************************************/
+.K8Cd22jfCRsni7oiKyjg {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid white;
+  flex-grow: 1;
+  height: 100%;
+}
+.fZHMX3RV663MgXKhDaWo {
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/WeatherWidget/components/Body/index.less ***!
+  \**********************************************************************************************************************************************************************************************************/
+.C04ksiAazI5d0FxyiA_J {
+  margin-right: 32px;
+}
+.l9557CPeDPN0wY1i9Q4T {
+  margin: 0;
+}
+.y5Ap27t_kXnDc33vWGjg {
+  margin-top: 0;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/WeatherWidget/components/SettingsButton/index.less ***!
+  \********************************************************************************************************************************************************************************************************************/
+.XFQXz30JLdwrbmNazhqv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/WeatherWidget/components/Settings/index.less ***!
+  \**************************************************************************************************************************************************************************************************************/
+.B2cneReRvVTkBawR3T9U {
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+}
+.B2cneReRvVTkBawR3T9U > .M8DeSTT3oQSEJd9trYkT {
+  display: flex;
+}
+.okDk8kts6zo9lYm5pKsA {
+  flex-grow: 1;
+}
+
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/WeatherWidget/index.less ***!
+  \******************************************************************************************************************************************************************************************/
+.osJymh9q3igk7lhcDrUi {
+  position: relative;
+  width: 100%;
+}
+.osJymh9q3igk7lhcDrUi.ZIxx7MOpOLAWHHoV9oGl {
+  background: #efeebc;
+  background: linear-gradient(to bottom, #efeebc 0%, #61d0cf 100%);
+}
+.osJymh9q3igk7lhcDrUi.NSInktsBoKkmjuqD0kxR {
+  background: #192861;
+  background: linear-gradient(to bottom, #192861 0%, #372074 100%);
+}
+.osJymh9q3igk7lhcDrUi > div {
+  overflow-wrap: break-word;
+}
+.ENeQPVc6Yd8uJQUpuQO0 {
+  position: absolute;
+  inset: 0;
+}
+._SPQIhK6UUR9o5aRU7ZW {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+/*!*********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/App/index.less ***!
+  \*********************************************************************************************************************************************************************/
+.i4JUY1kmcIJXbewaPiTs {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.Q_KChM4YLIcQvBDKh6r7 {
+  margin: 12px;
+}
+.pGTbc6zMTXZlNmzPbbza {
+  margin: 0 !important;
+  flex-grow: 1;
+  overflow-y: hidden;
+}
+
+/*!*****************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/index.less ***!
+  \*****************************************************************************************************************************************************************/
+body {
+  margin: 0;
+}
+#root {
+  height: calc(100vh - 16px);
+}
+
+
+/*# sourceMappingURL=index.css.map*/
